@@ -1,7 +1,7 @@
 // Types
 import {
     FETCH_SOF_SEARCH,
-} from './types';
+} from './types.js';
 
 const INITIAL_STATE = {
     SOFResult: {
@@ -26,7 +26,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 SOFResult: {
-                    data: action.SOFResultData,
+                    data: action.SOFSearchData,
                     isLoading: false,
                 },
             };
@@ -37,7 +37,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
                 SOFResult: {
                     data: [],
                     isLoading: false,
-                    error: action.SOFResultError,
+                    error: action.SOFSearchError,
                 },
             };
 

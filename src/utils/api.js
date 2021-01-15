@@ -8,10 +8,6 @@ const instancePublic = axios.create({});
 
 instancePublic.interceptors.request.use(
   (config) => {
-    // Don't IE request cache
-    config.headers.Pragma = 'no-cache';
-    config.headers['Access-Control-Allow-Origin'] = '*';
-
     return config;
   },
   (error) => Promise.reject(error),

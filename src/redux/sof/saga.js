@@ -9,8 +9,8 @@ import { FETCH_SOF_SEARCH } from './types';
 function* fetchSOFSearch(action) {
     const response = yield call(SOFService.getSearchResults, action.data);
     if (response.status === 200) {
-        console.log(response);
-        yield put({ type: FETCH_SOF_SEARCH.SUCCESS, SOFSearchData: response.data });
+        console.log('FETCH!!!');
+        // yield put({ type: FETCH_SOF_SEARCH.SUCCESS, SOFSearchData: response.data });
     } else {
         yield put({ type: FETCH_SOF_SEARCH.FAILURE, SOFSearchError: response.data.error });
     }

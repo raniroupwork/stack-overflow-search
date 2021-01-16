@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import './SearchPanel.sass';
 
 // Components
-import PageSize from '../../components/PageSize/PageSize.js'
-import SearchInput from '../../components/SearchInput/SearchInput.js'
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import SearchInput from '../../components/SearchInput/SearchInput.js'
+import PageSize from '../../components/PageSize/PageSize.js'
+import SearchTags from '../../components/SearchTags/SearchTags.js'
 
 // Types
 import { FETCH_SOF_SEARCH } from '../../redux/sof/types.js';
@@ -44,6 +45,7 @@ const SearchPanel = (props) => {
                     <Grid container spacing={2} >
                         <SearchInput></SearchInput>
                         <PageSize></PageSize>
+                        <SearchTags></SearchTags>
                     </Grid>
                 </Paper>
         </section>

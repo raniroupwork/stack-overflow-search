@@ -20,7 +20,7 @@ const SearchInput = () => {
     const [searchText, setSearchText] = useState('');
 
     return (
-        <Grid className="SearchInput__search-input" lg={6} md={6} xs={12} item>
+        <Grid className="SearchInput__search-input" lg={4} md={4} xs={12} item>
             <InputLabel className="SearchInput__input-label" shrink>Stack Overflow questions</InputLabel>
             <FormControl variant="outlined">
                     <InputLabel htmlFor="search-text-input">Search</InputLabel>

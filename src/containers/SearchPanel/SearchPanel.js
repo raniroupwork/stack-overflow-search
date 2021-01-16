@@ -44,7 +44,7 @@ const SearchPanel = (props) => {
     return (
         <section className="SearchPanel">
                 <Paper className="SearchPanel__paper" elevation={3}>
-                    <Grid container spacing={1} >
+                    <Grid container spacing={2} >
                         <SearchInput></SearchInput>
                         <PageSize></PageSize>
                         <SortBy></SortBy>

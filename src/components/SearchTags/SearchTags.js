@@ -42,7 +42,7 @@ const SearchTags = () => {
                 onDelete={(tag, index) => handleDeleteChip(tag, index)}
                 allowDuplicates={false}
                 fullWidth={true}
-                disableUnderline={SearchTagsFull}
+                disableUnderline={true}
             />
         </Grid>
     );

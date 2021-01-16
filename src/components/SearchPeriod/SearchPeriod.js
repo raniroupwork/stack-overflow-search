@@ -20,6 +20,7 @@ const SearchPeriod = () => {
             <MobileDateRangePicker
               startText="From"
               value={value}
+              maxDate={new Date()}
               onChange={(newValue) => {
                 setValue(newValue);
               }}

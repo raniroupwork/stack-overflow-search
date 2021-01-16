@@ -3,6 +3,7 @@ import {
     FETCH_SOF_SEARCH,
     SET_PAGE_SIZE,
     SET_PERIOD_DATES,
+    SET_SORT_BY,
 } from './types.js';
 
 const INITIAL_STATE = {
@@ -17,10 +18,29 @@ const INITIAL_STATE = {
     PeriodDates: {
         data: {},
     },
+    SortBy: {
+        data: 'activity',
+    },
 };
 
 const SOFReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_SORT_BY.REQUEST:
+            return {
+                ...state,
+                SortBy: {
+                    ...state.SortBy,
+                }
+            };
+
+        case SET_SORT_BY.SUCCESS:
+            return {
+                ...state,
+                SortBy: {
+                    data:action.SortBy,
+                },
+        };
+     
         case SET_PAGE_SIZE.REQUEST:
             return {
                 ...state,
@@ -36,8 +56,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
                     data:action.PageSize,
                 },
         };
-    
-            
+     
         case SET_PERIOD_DATES.REQUEST:
             return {
                 ...state,

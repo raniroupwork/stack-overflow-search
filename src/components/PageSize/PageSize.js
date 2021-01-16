@@ -37,8 +37,8 @@ const PageSize = (props) => {
 
     return (
         <Grid lg={1} md={1} xs={6} item className="PageSize">
-        {/* <h1>{pageSize}</h1>asus
-         */}
+        {/* <h1>{data}</h1> */}
+        
             <InputLabel className="PageSize__input-label" shrink id="number-item-per-page-select">
             Answers/Page
             </InputLabel>

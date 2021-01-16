@@ -7,6 +7,7 @@ import SOFService from '../../services/sof.js';
 import { FETCH_SOF_SEARCH } from './types';
 import { SET_PAGE_SIZE } from './types';
 import { SET_PERIOD_DATES } from './types';
+import { SET_SORT_BY } from './types';
 
 function* fetchSOFSearch(action) {
     // const response = yield call(SOFService.getSearchResults, action.data);
@@ -25,8 +26,13 @@ function* setPeriodDates(action) {
     yield put({ type: SET_PERIOD_DATES.SUCCESS, PeriodDates: action.data });
 }
 
+function* setSortType(action) {
+    yield put({ type: SET_SORT_BY.SUCCESS, SortBy: action.data.sortBy });
+}
+
 export const SOFSaga = [
     takeEvery(FETCH_SOF_SEARCH.REQUEST, fetchSOFSearch),
     takeEvery(SET_PAGE_SIZE.REQUEST, setPageSize),
     takeEvery(SET_PERIOD_DATES.REQUEST, setPeriodDates),
+    takeEvery(SET_SORT_BY.REQUEST, setSortType),
 ];

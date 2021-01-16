@@ -1,5 +1,5 @@
 // Modules
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Styles
 import './App.sass';
@@ -11,13 +11,21 @@ import QuestionsList from '../../containers/QuestionsList/QuestionsList';
 
 
 const App = () => {
+    const [isLogged, setValue] = useState(true);
+
     return (
         <main className="App">
-            <Login></Login>
-            <div>
-                <SearchPanel></SearchPanel>
-                <QuestionsList></QuestionsList>
-            </div>
+            <header>
+                <h1>Stack Overflow Find Questions</h1>
+            </header>
+            {!isLogged ? (
+                <Login></Login>
+            ):(
+                <div>
+                    <SearchPanel></SearchPanel>
+                    <QuestionsList></QuestionsList>
+                </div>
+            )}
         </main>
     );
 };

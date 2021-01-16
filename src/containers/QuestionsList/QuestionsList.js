@@ -10,9 +10,6 @@ const QuestionsList = () => {
     return (
         <section className="QuestionsList">
             <QuestionItem></QuestionItem>
-            <QuestionItem></QuestionItem>
-            <QuestionItem></QuestionItem>
-            <QuestionItem></QuestionItem>
         </section>
     );
 };

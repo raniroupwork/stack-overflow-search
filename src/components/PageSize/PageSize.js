@@ -1,5 +1,6 @@
 // Modules
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 // Styles
 import './PageSize.sass';
@@ -10,12 +11,34 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 
-const PageSize = () => {
+// Types
+import { SET_PAGE_SIZE } from '../../redux/sof/types.js';
+
+const PageSize = (props) => {
     const pagination = [5, 10, 15, 20, 25];
-    const [pageSize, setPageSize] = useState('5');
+    const [pageSize, setPageSize] = useState(5);
+    const {
+        dispatch,
+        SOFReducer: {
+            PageSize: {
+                data
+            }
+        }
+    } = props;
+
+    useEffect(() => {
+        dispatch({
+            type: SET_PAGE_SIZE.REQUEST,
+            data: {
+                pageSize
+            },
+        });
+    }, [pageSize])
 
     return (
         <Grid lg={1} md={1} xs={6} item className="PageSize">
+        {/* <h1>{pageSize}</h1>asus
+         */}
             <InputLabel className="PageSize__input-label" shrink id="number-item-per-page-select">
             Answers/Page
             </InputLabel>
@@ -33,4 +56,10 @@ const PageSize = () => {
     );
 };
 
-export default PageSize;
+const mapStateToProps = (state) => {
+    return {
+        SOFReducer: state.SOFReducer,
+    };
+}
+
+export default connect(mapStateToProps)(PageSize)

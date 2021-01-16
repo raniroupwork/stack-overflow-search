@@ -1,6 +1,8 @@
 // Types
 import {
     FETCH_SOF_SEARCH,
+    SET_PAGE_SIZE,
+    SET_PERIOD_DATES,
 } from './types.js';
 
 const INITIAL_STATE = {
@@ -9,10 +11,49 @@ const INITIAL_STATE = {
         isLoading: false,
         error: '',
     },
+    PageSize: {
+        data: 5,
+    },
+    PeriodDates: {
+        data: {},
+    },
 };
 
 const SOFReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_PAGE_SIZE.REQUEST:
+            return {
+                ...state,
+                PageSize: {
+                    ...state.PageSize,
+                }
+            };
+
+        case SET_PAGE_SIZE.SUCCESS:
+            return {
+                ...state,
+                PageSize: {
+                    data:action.PageSize,
+                },
+        };
+    
+            
+        case SET_PERIOD_DATES.REQUEST:
+            return {
+                ...state,
+                PeriodDates: {
+                    ...state.PeriodDates,
+                }
+            };
+            
+        case SET_PERIOD_DATES.SUCCESS:
+            return {
+                ...state,
+                PeriodDates: {
+                    data:action.PeriodDates,
+                },
+        };
+
         case FETCH_SOF_SEARCH.REQUEST:
             return {
                 ...state,

@@ -18,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 
 const SearchPeriod = (props) => {
   const [dates, setDatesValue] = useState([null, (new Date()).getTime()]);
-  const [datesTimestamp, setTimestampDatesValue] = useState([null, null]);
+  const [datesTimestamp, setTimestampDatesValue] = useState([null, (((new Date()).getTime() + (new Date()).getTimezoneOffset()*60*1000)/1000).toFixed(0)]);
 
   const {
       dispatch,
@@ -45,9 +45,14 @@ const SearchPeriod = (props) => {
       const dateFromTimestamp = ((newDatesValue[0].getTime() + newDatesValue[0].getTimezoneOffset()*60*1000)/1000).toFixed(0);
       const dateToTimestamp = ((newDatesValue[1].getTime() + newDatesValue[1].getTimezoneOffset()*60*1000)/1000).toFixed(0);
       setTimestampDatesValue([dateFromTimestamp, dateToTimestamp])
-      // console.log(new Date(datesTimestamp[0] * 1000));
-      // console.log(new Date(datesTimestamp[1] * 1000));
+    } else if(newDatesValue[0]) {
+        const dateFromTimestamp = ((newDatesValue[0].getTime() + newDatesValue[0].getTimezoneOffset()*60*1000)/1000).toFixed(0);
+        setTimestampDatesValue([dateFromTimestamp, null])
+      } else if(newDatesValue[1]) {
+      const dateToTimestamp = ((newDatesValue[1].getTime() + newDatesValue[1].getTimezoneOffset()*60*1000)/1000).toFixed(0);
+      setTimestampDatesValue([null, dateToTimestamp]);
     }
+
   };
 
   return (

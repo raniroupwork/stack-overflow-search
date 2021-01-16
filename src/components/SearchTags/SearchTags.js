@@ -52,7 +52,7 @@ const SearchTags = (props) => {
         setSearchTagsFull(false);
     }
     return (
-        <Grid className="SearchTags" lg={2} md={3} xs={12} item>
+        <Grid className="SearchTags" lg={3} md={3} xs={12} item>
             <InputLabel className="SearchTags__input-label" shrink id="search-tags">
             Tags
             </InputLabel>

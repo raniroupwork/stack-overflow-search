@@ -5,6 +5,7 @@ import {
     SET_PERIOD_DATES,
     SET_SORT_BY,
     SET_SEARCH_TAGS,
+    SET_SEARCH_TEXT,
 } from './types.js';
 
 const INITIAL_STATE = {
@@ -25,10 +26,29 @@ const INITIAL_STATE = {
     SearchTags: {
         data: [],
     },
+    SearchText: {
+        data: '',
+    },
 };
 
 const SOFReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_SEARCH_TEXT.REQUEST:
+            return {
+                ...state,
+                SearchText: {
+                    ...state.SearchText,
+                },
+            };
+
+        case SET_SEARCH_TEXT.SUCCESS:
+            return {
+                ...state,
+                SearchText: {
+                    data: action.SearchText,
+                },
+        };
+
         case SET_SEARCH_TAGS.REQUEST:
             return {
                 ...state,

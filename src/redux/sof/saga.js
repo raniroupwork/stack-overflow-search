@@ -9,6 +9,7 @@ import { SET_PAGE_SIZE } from './types';
 import { SET_PERIOD_DATES } from './types';
 import { SET_SORT_BY } from './types';
 import { SET_SEARCH_TAGS } from './types';
+import { SET_SEARCH_TEXT } from './types';
 
 function* fetchSOFSearch(action) {
     // const response = yield call(SOFService.getSearchResults, action.data);
@@ -35,9 +36,14 @@ function* setSearchTags(action) {
     yield put({ type: SET_SEARCH_TAGS.SUCCESS, SearchTags: action.data.searchTags });
 }
 
+function* setSearchText(action) {
+    yield put({ type: SET_SEARCH_TEXT.SUCCESS, SearchText: action.data.searchText });
+}
+
 export const SOFSaga = [
     takeEvery(FETCH_SOF_SEARCH.REQUEST, fetchSOFSearch),
     takeEvery(SET_PAGE_SIZE.REQUEST, setPageSize),
     takeEvery(SET_PERIOD_DATES.REQUEST, setPeriodDates),
     takeEvery(SET_SEARCH_TAGS.REQUEST, setSearchTags),
+    takeEvery(SET_SEARCH_TEXT.REQUEST, setSearchText),
 ];

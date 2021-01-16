@@ -1,8 +1,12 @@
 // Modules
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 // Styles
 import './SearchInput.sass'
+
+// Types
+import { SET_SEARCH_TEXT } from '../../redux/sof/types.js';
 
 // Components
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -15,24 +19,50 @@ import Grid from '@material-ui/core/Grid';
 // Icons
 import SearchIcon from '@material-ui/icons/Search';
 
-const SearchInput = () => {
-    
+const SearchInput = (props) => {
+    const [currentSearchText, setCurrentSearchText] = useState('');
     const [searchText, setSearchText] = useState('');
+    const [searchCount, setSearchCount] = useState(0);
+    const {
+        dispatch,
+        SOFReducer: {
+            SearchText: {
+                data,
+            }
+        }
+    } = props
+
+    const submitSearch = () => {
+        if(currentSearchText.length){
+            setSearchText(currentSearchText);
+            setSearchCount(searchCount + 1);
+        }
+    };
+
+    useEffect(() => {
+        dispatch({
+            type: SET_SEARCH_TEXT.REQUEST,
+            data: {
+                searchText
+            },
+        });
+    }, [searchText, searchCount])
 
     return (
-        <Grid className="SearchInput" lg={4} md={4} xs={12} item>
+        <Grid className="SearchInput" lg={3} md={4} xs={12} item>
             <InputLabel className="SearchInput__input-label" shrink>Stack Overflow questions</InputLabel>
             <FormControl variant="outlined">
                     <InputLabel htmlFor="search-text-input">Search</InputLabel>
                     <OutlinedInput
                         id="search-text-input"
+                        onChange={(e) => (setCurrentSearchText(e.target.value))}
                         type={'text'}
                         placeholder="Search Stack Overflow"
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton
                                 aria-label="Search submit"
-                                onClick={(e) => setSearchText(e.target.value)}
+                                onClick={submitSearch}
                                 edge="end"
                                 >
                                     <SearchIcon/>
@@ -46,4 +76,10 @@ const SearchInput = () => {
     );
 };
 
-export default SearchInput;
+const mapStateToProps = (state) => {
+    return {
+        SOFReducer: state.SOFReducer,
+    };
+}
+
+export default connect(mapStateToProps)(SearchInput)

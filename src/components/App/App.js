@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import './App.sass';
 
 // Components
+import Header from '../../containers/Header/Header.js'
 import Login from '../../containers/Login/Login.js'
 import SearchPanel from '../../containers/SearchPanel/SearchPanel.js'
 import QuestionsList from '../../containers/QuestionsList/QuestionsList';
@@ -15,9 +16,7 @@ const App = () => {
 
     return (
         <main className="App">
-            <header>
-                <h1>Stack Overflow Find Questions</h1>
-            </header>
+            <Header></Header>
             {!isLogged ? (
                 <Login></Login>
             ):(

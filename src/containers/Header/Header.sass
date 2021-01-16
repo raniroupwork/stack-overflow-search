@@ -1,0 +1,31 @@
+.Header
+    background-color: #fafafb
+    width: 100%
+    padding: 12px 24px
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 100
+    transition: box-shadow cubic-bezier(.165, .84, .44, 1) .25s
+    box-shadow: 0 2px 0 rgba(12,13,14,0.15);
+    height: 70px
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif
+    box-sizing: border-box
+    border-top: #f48024 solid 3px
+    margin-bottom: 16px;
+    p
+        padding-top: 5px
+    span
+        font-weight: bold
+.Header__svg
+    width: 54px
+
+@media screen and ( max-width: 600px )
+    .Header
+        padding: 8px
+        height: 50px
+        margin-bottom: 8px
+        font-size: 0.8rem
+    .Header__svg
+        width: 32px
+    

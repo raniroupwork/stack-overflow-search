@@ -4,6 +4,7 @@ import {
     SET_PAGE_SIZE,
     SET_PERIOD_DATES,
     SET_SORT_BY,
+    SET_SEARCH_TAGS,
 } from './types.js';
 
 const INITIAL_STATE = {
@@ -16,21 +17,40 @@ const INITIAL_STATE = {
         data: 5,
     },
     PeriodDates: {
-        data: {},
+        data: [],
     },
     SortBy: {
         data: 'activity',
+    },
+    SearchTags: {
+        data: [],
     },
 };
 
 const SOFReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_SEARCH_TAGS.REQUEST:
+            return {
+                ...state,
+                SearchTags: {
+                    ...state.SearchTags,
+                },
+            };
+
+        case SET_SEARCH_TAGS.SUCCESS:
+            return {
+                ...state,
+                SearchTags: {
+                    data: action.SearchTags,
+                },
+        };
+     
         case SET_SORT_BY.REQUEST:
             return {
                 ...state,
                 SortBy: {
                     ...state.SortBy,
-                }
+                },
             };
 
         case SET_SORT_BY.SUCCESS:
@@ -46,7 +66,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 PageSize: {
                     ...state.PageSize,
-                }
+                },
             };
 
         case SET_PAGE_SIZE.SUCCESS:
@@ -62,7 +82,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 PeriodDates: {
                     ...state.PeriodDates,
-                }
+                },
             };
             
         case SET_PERIOD_DATES.SUCCESS:

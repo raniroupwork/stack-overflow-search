@@ -15,7 +15,7 @@ const SortBy = () => {
     const [sortBy, setSortBy] = useState('Activity');
 
     return (
-        <Grid className="SortBy" lg={1} md={3} xs={6} item>
+        <Grid className="SortBy" lg={2} md={3} xs={6} item>
             <InputLabel className="SortBy__input-label" shrink id="sort-by-select">
             Sort By
             </InputLabel>

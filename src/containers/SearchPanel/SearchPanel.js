@@ -11,6 +11,7 @@ import SearchInput from '../../components/SearchInput/SearchInput.js'
 import PageSize from '../../components/PageSize/PageSize.js'
 import SearchTags from '../../components/SearchTags/SearchTags.js'
 import SortBy from '../../components/SortBy/SortBy.js'
+import SearchPeriod from '../../components/SearchPeriod/SearchPeriod.js'
 
 // Types
 import { FETCH_SOF_SEARCH } from '../../redux/sof/types.js';
@@ -43,11 +44,12 @@ const SearchPanel = (props) => {
     return (
         <section className="SearchPanel">
                 <Paper className="SearchPanel__paper" elevation={3}>
-                    <Grid container spacing={2} >
+                    <Grid container spacing={1} >
                         <SearchInput></SearchInput>
                         <PageSize></PageSize>
                         <SortBy></SortBy>
                         <SearchTags></SearchTags>
+                        <SearchPeriod></SearchPeriod>
                     </Grid>
                 </Paper>
         </section>

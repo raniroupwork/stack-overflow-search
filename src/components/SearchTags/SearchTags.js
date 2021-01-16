@@ -30,7 +30,7 @@ const SearchTags = () => {
         setSearchTagsFull(false);
     }
     return (
-        <Grid lg={2} md={2} xs={4} item>
+        <Grid className="SearchTags" lg={3} md={3} xs={12} item>
             <InputLabel className="SearchTags__input-label" shrink id="search-tags">
             Tags
             </InputLabel>
@@ -41,6 +41,8 @@ const SearchTags = () => {
                 onAdd={(tag) => handleAddChip(tag)}
                 onDelete={(tag, index) => handleDeleteChip(tag, index)}
                 allowDuplicates={false}
+                fullWidth={true}
+                disableUnderline={SearchTagsFull}
             />
         </Grid>
     );

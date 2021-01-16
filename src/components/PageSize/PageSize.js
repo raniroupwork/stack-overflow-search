@@ -15,7 +15,7 @@ const PageSize = () => {
     const [pageSize, setPageSize] = useState('5');
 
     return (
-        <Grid lg={2} md={2} xs={4} item>
+        <Grid lg={1} md={1} xs={6} item>
             <InputLabel className="PageSize__input-label" shrink id="number-item-per-page-select">
             Answers/Page
             </InputLabel>

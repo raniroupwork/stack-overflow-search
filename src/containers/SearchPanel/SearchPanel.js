@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import SearchInput from '../../components/SearchInput/SearchInput.js'
 import PageSize from '../../components/PageSize/PageSize.js'
 import SearchTags from '../../components/SearchTags/SearchTags.js'
+import SortBy from '../../components/SortBy/SortBy.js'
 
 // Types
 import { FETCH_SOF_SEARCH } from '../../redux/sof/types.js';
@@ -45,6 +46,7 @@ const SearchPanel = (props) => {
                     <Grid container spacing={2} >
                         <SearchInput></SearchInput>
                         <PageSize></PageSize>
+                        <SortBy></SortBy>
                         <SearchTags></SearchTags>
                     </Grid>
                 </Paper>

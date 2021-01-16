@@ -21,6 +21,7 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#F48024",
     color: theme.palette.common.white,
+    fontWeight: 'bold',
   },
   body: {
     fontSize: 14,
@@ -32,19 +33,15 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.common.white,
     },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
   },
 }))(TableRow);
 
-function createData(name, date, views, answers, reputation) {
+function questionInfo(name, date, views, answers, reputation) {
   return { name, date, views, answers, reputation };
 }
 
 const rows = [
-  createData('22/02/2017','Keaton Benning', 1403, 8, 49),
+  questionInfo('22/02/2017','Keaton Benning', 1403, 8, 49),
 ];
 
 const useStyles = makeStyles({

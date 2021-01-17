@@ -36,9 +36,8 @@ const Header = () => {
                             >
                             <Dropdown.Menu>
                                 <Modal
-                                //   open={open}
+                                    open={open}
                                     size={"large"}
-                                    open={true}
                                     onClose={() => setOpen(false)}
                                     onOpen={() => setOpen(true)}
                                     trigger={

@@ -1,18 +1,9 @@
 // Modules
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState, useEffect} from 'react';
 
 // Styles
 import "./HistoryModalContentItem.sass"
-
-// Components
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import PageSize from '../../../components/PageSize/PageSize.js'
-import SearchTags from '../../../components/SearchTags/SearchTags.js'
-import SortBy from '../../../components/SortBy/SortBy.js'
-import SearchPeriod from '../../../components/SearchPeriod/SearchPeriod.js'
+import { makeStyles } from '@material-ui/core/styles';
 
 // Icons
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,17 +11,31 @@ import EditIcon from '@material-ui/icons/Edit';
 import HistoryIcon from '@material-ui/icons/History';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// Components
+import SearchPeriod from '../../../components/SearchPeriod/SearchPeriod.js'
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import PageSize from '../../../components/PageSize/PageSize.js'
+import SearchTags from '../../../components/SearchTags/SearchTags.js'
+import SortBy from '../../../components/SortBy/SortBy.js'
+import Grid from '@material-ui/core/Grid';
+
+
 
 const HistoryModalContentItem = () => {
+    const useStyles = makeStyles((theme) => ({
+      button: {
+        margin: theme.spacing(1),
+      },
+    }));
     const classes = useStyles();
 
     const [historyData, setHistoryData] = useState([]);
     const [edit, setEditFilters] = useState([false]);
+
+    useEffect(() => {
+      setEditFilters(false)
+    }, [])
 
     return (
         <Paper className={`HistoryModalContentItem__paper ${edit ? "" : "HistoryModalContentItem__paper--disable"}`} variant="outlined" elevation={0}>
@@ -67,7 +72,7 @@ const HistoryModalContentItem = () => {
                 <SearchTags xs={12} md={4} lg={4}/>
                 <SearchPeriod xs={12} md={4} lg={4}/>
             </Grid>
-                <div className="HistoryModalContentItem__edit">
+                <div className="HistoryModalContentItem__edit" onClick={()=>(setEditFilters(!edit))}>
                     <EditIcon style={{ color: "#151515", fontSize: 18 }}/>
                 </div>
         </Paper>

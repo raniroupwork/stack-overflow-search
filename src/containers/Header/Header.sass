@@ -13,19 +13,51 @@
     box-sizing: border-box
     border-top: #f48024 solid 3px
     margin-bottom: 16px;
+    cursor: default
     p
         padding-top: 5px
     span
         font-weight: bold
 .Header__svg
     width: 54px
+.Header__menu-wrapper
+    position: relative
 
+.Header__user-name
+    width: max-content;
+    position: absolute;
+    right: 40px;
+    top: -12px;
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: default
+
+.Header__menu
+    position: absolute
+    right: 40px
+    top: -15px
+    svg
+        color: #f48024
+        font-size: 28px
+        cursor: pointer
+        &:hover
+            color: lighten(#f48024, 15)
+            transition: color 0.3s ease-in-out
+    .rc-menu-container 
+        position: absolute
+        width: 0px;
+        height: 0px;
+        right: 150px;
+        text-align: right
+    
 @media screen and ( max-width: 600px )
     .Header
         padding: 8px
-        height: 50px
+        height: 70px
         margin-bottom: 8px
         font-size: 0.8rem
     .Header__svg
         width: 32px
+    .Header__menu
+        right: 20px
     

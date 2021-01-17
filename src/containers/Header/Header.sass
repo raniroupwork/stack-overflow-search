@@ -1,4 +1,5 @@
 .Header
+    position: relative
     background-color: #fafafb
     width: 100%
     padding: 12px 24px
@@ -14,55 +15,22 @@
     border-top: #f48024 solid 3px
     margin-bottom: 16px;
     cursor: default
-    .Header__logo-title
+.Header__logo
+    display: flex
+    justify-content: start
+    align-items: center
+.Header__logo-title
+    p
         padding-top: 20px
     span
         font-weight: bold
-.Header__logo-svg
+.Header__logo-icon
     width: 54px
-.Header__menu-wrapper
-    position: relative
-
-.Header__user-name
-    width: max-content;
-    position: absolute;
-    right: 40px;
-    top: 5px;
-    font-size: 0.9rem;
-    text-align: left;
-    cursor: default
-
-.Header__menu
-    position: absolute
-    right: 40px
-    top: -15px
-    svg
-        color: #f48024
-        font-size: 28px
-        cursor: pointer
-        &:hover
-            color: lighten(#f48024, 15)
-            transition: color 0.3s ease-in-out
-    .rc-menu-container 
-        position: absolute
-        width: 0px;
-        height: 0px;
-        right: 150px;
-        text-align: right
     
 @media screen and ( max-width: 600px )
     .Header
         padding: 8px
         height: 70px
         margin-bottom: 8px
-        .Header__logo-title
-            position: absolute
-            left: 42px
-            top: 6px
-    .Header__logo-svg
-        margin-top: 12px
-        width: 32px
-    .Header__menu
-        right: 20px
-        top: -10px
+
     

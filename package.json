@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@carbon/icons-react": "10.22.0",
     "@date-io/date-fns": "1.x",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
@@ -15,6 +16,9 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "carbon-components": "^10.26.0",
+    "carbon-components-react": "^7.26.0",
+    "carbon-icons": "7.0.7",
     "date-fns": "^2.16.1",
     "material-ui-chip-input": "^2.0.0-beta.2",
     "node-sass": "4.14.1",
@@ -26,7 +30,8 @@
     "redux-devtools": "^3.7.0",
     "redux-root-saga": "^1.1.4",
     "redux-saga": "^1.1.3",
-    "redux-saga-helpers": "^0.1.2"
+    "redux-saga-helpers": "^0.1.2",
+    "sass": "1.29.0"
   },
   "scripts": {
     "start": "react-scripts start",

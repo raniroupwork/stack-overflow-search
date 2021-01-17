@@ -6,6 +6,7 @@ import '@szhsin/react-menu/dist/index.css';
 import './Header.sass';
 
 // Components
+import HistoryMoral from '../../components/HistoryModal/HistoryModal.js'
 import { Menu, MenuItem, ControlledMenu } from '@szhsin/react-menu';
 import Grid from '@material-ui/core/Grid';
 
@@ -28,8 +29,8 @@ const Header = () => {
                     <Grid 
                     container
                     className="Header__logo-icon">
-                        <StackOverflowIcon className="Header__svg"></StackOverflowIcon>
-                        <p>stack <span>overflowGet</span></p>
+                        <StackOverflowIcon className="Header__logo-svg"></StackOverflowIcon>
+                        <p className="Header__logo-title">stack <span>overflowGet</span></p>
                     </Grid>
                     {auth && (<Grid className="Header__menu-wrapper">
                         <div className="Header__menu">
@@ -47,6 +48,7 @@ const Header = () => {
                     </Grid>)}
                 </Grid>
             </nav>
+            {/* <HistoryMoral></HistoryMoral> */}
         </header>
     );
 };

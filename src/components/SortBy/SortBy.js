@@ -18,6 +18,7 @@ const SortBy = (props) => {
     const pagination = ['Activity', 'Creation', 'Relevance', 'Votes'];
     const [sortBy, setSortBy] = useState('Activity');
     const {
+        xs, md, lg,
         dispatch,
         SOFReducer: {
             SortBy: {
@@ -36,8 +37,7 @@ const SortBy = (props) => {
     }, [sortBy])
 
     return (
-        <Grid className="SortBy" lg={2} md={3} xs={6} item>
-            {/* <h1>{data}</h1> */}
+        <Grid className="SortBy" lg={lg} md={md} xs={xs} item>
             <InputLabel className="SortBy__input-label" shrink id="sort-by-select">
             Sort By
             </InputLabel>

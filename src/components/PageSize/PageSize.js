@@ -18,6 +18,7 @@ const PageSize = (props) => {
     const pagination = [5, 10, 15, 20, 25];
     const [pageSize, setPageSize] = useState(5);
     const {
+        xs, md, lg,
         dispatch,
         SOFReducer: {
             PageSize: {
@@ -36,9 +37,7 @@ const PageSize = (props) => {
     }, [pageSize])
 
     return (
-        <Grid lg={1} md={1} xs={6} item className="PageSize">
-        {/* <h1>{data}</h1> */}
-        
+        <Grid lg={lg} md={md} xs={xs} item className="PageSize">
             <InputLabel className="PageSize__input-label" shrink id="number-item-per-page-select">
             Answers/Page
             </InputLabel>

@@ -24,6 +24,7 @@ const SearchInput = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchCount, setSearchCount] = useState(0);
     const {
+        xs, md, lg,
         dispatch,
         SOFReducer: {
             SearchText: {
@@ -49,7 +50,7 @@ const SearchInput = (props) => {
     }, [searchText, searchCount])
 
     return (
-        <Grid className="SearchInput" lg={3} md={4} xs={12} item>
+        <Grid className="SearchInput" lg={lg} md={md} xs={xs} item>
             <InputLabel className="SearchInput__input-label" shrink>Stack Overflow questions</InputLabel>
             <FormControl variant="outlined">
                     <InputLabel htmlFor="search-text-input">Search</InputLabel>

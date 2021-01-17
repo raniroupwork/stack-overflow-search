@@ -21,6 +21,7 @@ const SearchPeriod = (props) => {
   const [datesTimestamp, setTimestampDatesValue] = useState([null, (((new Date()).getTime() + (new Date()).getTimezoneOffset()*60*1000)/1000).toFixed(0)]);
 
   const {
+      xs, md, lg,
       dispatch,
       SOFReducer: {
           PeriodDates: {
@@ -56,8 +57,7 @@ const SearchPeriod = (props) => {
   };
 
   return (
-      <Grid className="SearchPeriod" lg={3} md={3} xs={12} item>
-      {/* <h1>{datesTimestamp[0]} --- {datesTimestamp[1]}</h1> */}
+      <Grid className="SearchPeriod" lg={lg} md={md} xs={xs} item>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <MobileDateRangePicker
             startText="From"

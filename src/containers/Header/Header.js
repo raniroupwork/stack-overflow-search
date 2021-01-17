@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import './Header.sass';
 
 // Components
-import ModalContent from './ModalContent.js'
+import HistoryModalContent from '../../components/HistoryModalContent/HistoryModalContent.js'
 import { Button, Icon, Modal } from 'semantic-ui-react'
 import { Dropdown } from 'semantic-ui-react'
 
@@ -36,20 +36,23 @@ const Header = () => {
                             >
                             <Dropdown.Menu>
                                 <Modal
-                                  open={open}
-                                  onClose={() => setOpen(false)}
-                                  onOpen={() => setOpen(true)}
-                                  trigger={<Dropdown.Item
-                                  key={'Search History'}
-                                  text={'Search History'}
-                                  value={'Search History'}/>}
-                                >
-                                  <ModalContent></ModalContent>
-                                  <Modal.Actions>
+                                //   open={open}
+                                    size={"large"}
+                                    open={true}
+                                    onClose={() => setOpen(false)}
+                                    onOpen={() => setOpen(true)}
+                                    trigger={
+                                        <Dropdown.Item
+                                            key={'Search History'}
+                                            text={'Search History'}
+                                            value={'Search History'}/>
+                                }>
+                                    <HistoryModalContent></HistoryModalContent>
+                                    <Modal.Actions>
                                     <Button onClick={() => setOpen(false)} primary>
-                                      Cancel
+                                        Cancel
                                     </Button>
-                                  </Modal.Actions>
+                                    </Modal.Actions>
                                 </Modal>
 
                                 <Dropdown.Item

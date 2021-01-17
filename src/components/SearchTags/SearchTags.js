@@ -17,6 +17,7 @@ const SearchTags = (props) => {
     const [searchTags, setSearchTags] = useState([]);
     const [SearchTagsFull, setSearchTagsFull] = useState(false);
     const {
+        xs, md, lg,
         dispatch,
         SOFReducer: {
             SearchTags: {
@@ -52,7 +53,7 @@ const SearchTags = (props) => {
         setSearchTagsFull(false);
     }
     return (
-        <Grid className="SearchTags" lg={3} md={3} xs={12} item>
+        <Grid className="SearchTags" lg={lg} md={md} xs={xs} item>
             <InputLabel className="SearchTags__input-label" shrink id="search-tags">
             Tags
             </InputLabel>

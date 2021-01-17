@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 // Styles
 import './App.sass';
+import 'semantic-ui-css/semantic.min.css'
 
 // Components
 import Header from '../../containers/Header/Header.js'

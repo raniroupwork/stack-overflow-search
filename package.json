@@ -25,7 +25,9 @@
     "redux-devtools": "^3.7.0",
     "redux-root-saga": "^1.1.4",
     "redux-saga": "^1.1.3",
-    "redux-saga-helpers": "^0.1.2"
+    "redux-saga-helpers": "^0.1.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

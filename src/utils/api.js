@@ -15,6 +15,7 @@ instancePublic.interceptors.request.use(
 
 class ApiSOF {
   static get(uri) {
+    console.log('URI: ', uri);
     return instancePublic.get(`${BASE_URL}${uri}`);
   }
 }

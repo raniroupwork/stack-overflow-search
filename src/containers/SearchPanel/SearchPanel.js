@@ -1,6 +1,6 @@
 // Modules
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+
 // Styles
 import './SearchPanel.sass';
 
@@ -13,34 +13,8 @@ import SearchTags from '../../components/SearchTags/SearchTags.js'
 import SortBy from '../../components/SortBy/SortBy.js'
 import SearchPeriod from '../../components/SearchPeriod/SearchPeriod.js'
 
-// Types
-import { FETCH_SOF_SEARCH } from '../../redux/sof/types.js';
+const SearchPanel = () => {
 
-const SearchPanel = (props) => {
-    const {
-        dispatch,
-        SOFReducer: {
-            SOFResult: {
-                data,
-                isLoading,
-                error,
-            }
-        }
-    } = props;
-
-    useEffect(() => {
-        dispatch({
-            type: FETCH_SOF_SEARCH.REQUEST,
-            data: {
-                currentPage: 1,
-                pageSize: 10,
-                sortType: 'votes',
-                searchText: 'react node'
-            },
-        });
-    }, [])
-    
-    
     return (
         <section className="SearchPanel">
                 <Paper className="SearchPanel__paper" elevation={3}>
@@ -56,10 +30,4 @@ const SearchPanel = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        SOFReducer: state.SOFReducer,
-    };
-}
-
-export default connect(mapStateToProps)(SearchPanel);
+export default SearchPanel;

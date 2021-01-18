@@ -12,12 +12,14 @@ import { SET_SEARCH_TAGS } from './types';
 import { SET_SEARCH_TEXT } from './types';
 
 function* fetchSOFSearch(action) {
-    // const response = yield call(SOFService.getSearchResults, action.data);
-    // if (response.status === 200) {
-    //     yield put({ type: FETCH_SOF_SEARCH.SUCCESS, SOFSearchData: response.data });
-    // } else {
-    //     yield put({ type: FETCH_SOF_SEARCH.FAILURE, SOFSearchError: response.data.error });
-    // }
+    const response = yield call(SOFService.getSearchResults, action.data);
+    console.log("Saga Action: ", action);
+    console.log('Response: ', response);
+    if (response.status === 200) {
+        yield put({ type: FETCH_SOF_SEARCH.SUCCESS, SOFSearchData: response.data });
+    } else {
+        yield put({ type: FETCH_SOF_SEARCH.FAILURE, SOFSearchError: response.data.error });
+    }
 }
 
 function* setPageSize(action) {

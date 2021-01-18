@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import './SearchInput.sass'
 
 // Types
-import { SET_SEARCH_TEXT } from '../../redux/sof/types.js';
+import { SET_SEARCH_TEXT, FETCH_SOF_SEARCH } from '../../redux/sof/types.js';
 
 // Components
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -23,20 +23,33 @@ const SearchInput = (props) => {
     const [currentSearchText, setCurrentSearchText] = useState('');
     const [searchText, setSearchText] = useState('');
     const [searchCount, setSearchCount] = useState(0);
+    const [inputError, setInputError] = useState(false);
     const {
         xs, md, lg,
         dispatch,
-        SOFReducer: {
-            SearchText: {
-                data,
-            }
-        }
+        SOFReducer
     } = props
 
     const submitSearch = () => {
         if(currentSearchText.length){
             setSearchText(currentSearchText);
             setSearchCount(searchCount + 1);
+            setInputError(false);
+            console.log('Props: ', props);
+            dispatch({
+                type: FETCH_SOF_SEARCH.REQUEST,
+                data: {
+                    currentPage: 1,
+                    pageSize: SOFReducer.PageSize.data,
+                    fromDate: SOFReducer.PeriodDates.data.fromDate,
+                    toDate: SOFReducer.PeriodDates.data.toDate,
+                    searchTags: SOFReducer.SearchTags.data,
+                    searchText: currentSearchText,
+                    sortBy: SOFReducer.SortBy.data,
+                },
+            });
+        } else {
+            setInputError(true);
         }
     };
 
@@ -44,7 +57,7 @@ const SearchInput = (props) => {
         dispatch({
             type: SET_SEARCH_TEXT.REQUEST,
             data: {
-                searchText
+                searchText,
             },
         });
     }, [searchText, searchCount])
@@ -58,6 +71,7 @@ const SearchInput = (props) => {
                         id="search-text-input"
                         onChange={(e) => (setCurrentSearchText(e.target.value))}
                         type={'text'}
+                        error={inputError}
                         placeholder="Search Stack Overflow"
                         endAdornment={
                             <InputAdornment position="end">

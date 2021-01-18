@@ -23,7 +23,7 @@ const SortBy = (props) => {
         SOFReducer: {
             SortBy: {
                 data,
-            }
+            },
         }
     } = props;
 

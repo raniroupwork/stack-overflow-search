@@ -71,6 +71,7 @@ const SearchInput = (props) => {
                         id="search-text-input"
                         onChange={(e) => (setCurrentSearchText(e.target.value))}
                         type={'text'}
+                        disabled={SOFReducer.SOFResult.isLoading}
                         error={inputError}
                         placeholder="Search Stack Overflow"
                         endAdornment={

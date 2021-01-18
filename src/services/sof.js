@@ -5,7 +5,7 @@ class SOFService {
     static getSearchResults(data) {
         console.log("SOF Service", data);
         const fromDate = data.fromDate ? `&fromdate=${data.fromDate}` : '';
-        const toDate = data.toDate ? `&fromdate=${data.toDate}` : '';
+        const toDate = data.toDate ? `&todate=${data.toDate}` : '';
         const searchTags = data.toDate.length ? `&tagged=${data.searchTags.join("%20")}` : '';
         const searchText = data.searchText.trim().replace(/\s/g, "%20");
 

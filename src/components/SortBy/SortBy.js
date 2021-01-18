@@ -34,6 +34,7 @@ const SortBy = (props) => {
                 sortBy
             },
         });
+        console.log(props);
     }, [sortBy])
 
     return (

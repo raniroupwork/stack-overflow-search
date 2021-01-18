@@ -31,13 +31,13 @@ const SearchPeriod = (props) => {
       }
   } = props;
   useEffect(() => {
-      dispatch({
-          type: SET_PERIOD_DATES.REQUEST,
-          data: {
-            fromDate: datesTimestamp[0],
-            toDate: datesTimestamp[1],
-          },
-      });
+    dispatch({
+      type: SET_PERIOD_DATES.REQUEST,
+      data: {
+        fromDate: datesTimestamp[0],
+        toDate: datesTimestamp[1],
+      },
+    });
   }, [dates, datesTimestamp])
 
   /* Convert Dates to  unix epoch time */

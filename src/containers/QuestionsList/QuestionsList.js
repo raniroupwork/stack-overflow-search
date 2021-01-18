@@ -28,9 +28,9 @@ const QuestionsList = (props) => {
             {(isLoading ? (
                 <CircularProgress className="QuestionsList__loading"/>
             ) : (
-                data.items && data.items.map((item, index) => (
+                data.items && data.items.length ? data.items.map((item) => (
                     <QuestionItem key={item.question_id} data={item}></QuestionItem>
-                ))
+                )) : data.items && (<p>No results</p>)
             ))}
         </section>
     );

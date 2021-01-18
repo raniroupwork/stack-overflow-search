@@ -78,7 +78,7 @@ const QuestionsItem = (props) => {
             </TableHead>
             <TableBody>
                 <StyledTableRow>
-                    <StyledTableCell width="20%" align="left">{moment.unix(data.creation_date).format("MM/DD/YYYY")}</StyledTableCell>
+                    <StyledTableCell width="20%" align="left">{moment.unix(data.creation_date).format("MMMM DD, YYYY")}</StyledTableCell>
                     <StyledTableCell width="20%" align="right">{data.owner.display_name}</StyledTableCell>
                     <StyledTableCell width="20%" align="right">{data.view_count}</StyledTableCell>
                     <StyledTableCell width="20%" align="right">{data.answer_count}</StyledTableCell>

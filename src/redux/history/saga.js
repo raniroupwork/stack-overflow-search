@@ -9,8 +9,7 @@ import { FETCH_SEARCH_HISTORY, UPDATE_SEARCH_HISTORY } from './types';
 
 function* fetchSearchHistory(action) {
     const response = yield call(HistoryService.getSearchResults, action.data);
-    console.log("Saga Action: ", action); // REMOVE
-    console.log('Response: ', response); // REMOVE
+
     if (response.status === 200) {
         yield put({ type: FETCH_SEARCH_HISTORY.SUCCESS, HistorySearchData: response.data });
     } else {
@@ -19,14 +18,17 @@ function* fetchSearchHistory(action) {
 }
 
 function* updateSearchHistory(action) {
-    console.log('HISTORY ACTION: ', action);
-    const response = yield call(HistoryService.updateSearchHistory, action.data);
+    console.log('HISTORY ACTION: ', action.data);
+
+    yield put({ type: UPDATE_SEARCH_HISTORY.SUCCESS, HistorySearchData: action.data });
+
+    // const response = yield call(HistoryService.updateSearchHistory, action.data);
     
-    if (response.status === 200) {
-        alert('Save History Success'); // REMOVE
-    } else {
-        alert('Save History Error'); // REMOVE
-    }
+    // if (response.status === 200) {
+    //     alert('Save History Success'); // REMOVE
+    // } else {
+    //     alert('Save History Error'); // REMOVE
+    // }
 }
 
 export const historySaga = [

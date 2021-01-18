@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const SaveButton = (props) => {
     const classes = useStyles();
     const {
+        dispatch,
         SOFReducer: {
             PageSize,
             PeriodDates,
@@ -27,12 +28,29 @@ const SaveButton = (props) => {
             SearchTags,
             SearchText,
             SortBy
-        }
+        },
+        HistoryReducer,
+
     } = props;
 
     const [enabled, setDisabled] = useState(false)
-    const [currentSearchText, setCurrentSearchText] = useState('text')
 
+    const handleClick = () => {
+        // setDisabled(false);
+        console.log(props);
+        dispatch({
+            type: UPDATE_SEARCH_HISTORY.REQUEST,
+            data: {
+                pageSize: PageSize.data,
+                fromDate: PeriodDates.data.fromDate,
+                toDate: PeriodDates.data.toDate,
+                searchTags: SearchTags.data,
+                pageSize: PageSize,
+                sortBy: SortBy.data,
+                searchText: SearchText.data
+            },
+        });
+    }; 
 
     useEffect(() => {
         setDisabled(SOFResult.enableSearch);
@@ -48,8 +66,10 @@ const SaveButton = (props) => {
               variant="contained"
               color="primary"
               size="medium"
-              onClick={() => (setDisabled(false))}
-              disabled={!enabled}
+            //   onClick={() => (setDisabled(false))}
+              onClick={() => (handleClick())}
+            //   disabled={!enabled}
+              disabled={false}
               className={classes.button}
               startIcon={<SaveIcon />}>
                 Save
@@ -61,7 +81,7 @@ const SaveButton = (props) => {
 const mapStateToProps = (state) => {
     return {
         SOFReducer: state.SOFReducer,
-        historyReducer: state.historyReducer,
+        HistoryReducer: state.HistoryReducer,
     };
 }
 

@@ -78,6 +78,7 @@ const SearchInput = (props) => {
                             <InputAdornment position="end">
                                 <IconButton
                                 aria-label="Search submit"
+                                color="primary"
                                 onClick={submitSearch}
                                 edge="end"
                                 >

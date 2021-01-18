@@ -19,14 +19,13 @@ function* fetchSearchHistory(action) {
 }
 
 function* updateSearchHistory(action) {
+    console.log('HISTORY ACTION: ', action);
     const response = yield call(HistoryService.updateSearchHistory, action.data);
-
+    
     if (response.status === 200) {
         alert('Save History Success'); // REMOVE
-        yield put({ type: FETCH_SEARCH_HISTORY.SUCCESS, HistorySearchData: response.data });
     } else {
         alert('Save History Error'); // REMOVE
-        yield put({ type: FETCH_SEARCH_HISTORY.FAILURE, HistorySearchError: response.data.error });
     }
 }
 

@@ -56,7 +56,8 @@ const QuestionsItem = (props) => {
         <TableContainer component={Paper} elevation={2} className="QuestionsItem__table">
             <Table className={classes.table} aria-label="customized table">
             <caption className="QuestionsItem__caption">
-                <span>{data.title}</span>
+                <span style={{fontWeight: 'bold', fontSize: '1rem'}}>Question: </span>
+                <span style={{fontStyle: 'italic', fontSize: '1rem'}}>"{data.title}"</span>
                     <IconButton
                     aria-label="Go to question"
                     onClick={(e) => window.open(data.link, "_blank")}
@@ -68,11 +69,11 @@ const QuestionsItem = (props) => {
             </caption>
             <TableHead>
                 <TableRow>
-                <StyledTableCell width="20%" align="left">Creation Date</StyledTableCell>
-                <StyledTableCell width="20%" align="right">User</StyledTableCell>
-                <StyledTableCell width="20%" align="right">View Count</StyledTableCell>
-                <StyledTableCell width="20%" align="right">Answer Count</StyledTableCell>
-                <StyledTableCell width="20%" align="right">Score</StyledTableCell>
+                <StyledTableCell width="20%" align="left">CREATION DATE</StyledTableCell>
+                <StyledTableCell width="20%" align="right">USER</StyledTableCell>
+                <StyledTableCell width="20%" align="right">VIEW COUNT</StyledTableCell>
+                <StyledTableCell width="20%" align="right">ANSWER COUNT</StyledTableCell>
+                <StyledTableCell width="20%" align="right">SCORE</StyledTableCell>
                 </TableRow>
             </TableHead>
             <TableBody>

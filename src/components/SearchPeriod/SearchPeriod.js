@@ -1,5 +1,6 @@
 // Modules
 import React, { useState, useEffect } from 'react';
+import moment from 'moment'
 import { connect } from 'react-redux';
 
 // Styles
@@ -40,20 +41,16 @@ const SearchPeriod = (props) => {
       });
   }, [dates])
 
+  /* Convert Dates to  unix epoch time */
   const handleDatesValue = (newDatesValue) => {
     setDatesValue([newDatesValue[0], newDatesValue[1]]);
     if(newDatesValue[0] && newDatesValue[1]) {
-      const dateFromTimestamp = ((newDatesValue[0].getTime() + newDatesValue[0].getTimezoneOffset()*60*1000)/1000).toFixed(0);
-      const dateToTimestamp = ((newDatesValue[1].getTime() + newDatesValue[1].getTimezoneOffset()*60*1000)/1000).toFixed(0);
-      setTimestampDatesValue([dateFromTimestamp, dateToTimestamp])
+      setTimestampDatesValue([moment(newDatesValue[0]).format('X'), moment(newDatesValue[1]).format('X')]);
     } else if(newDatesValue[0]) {
-        const dateFromTimestamp = ((newDatesValue[0].getTime() + newDatesValue[0].getTimezoneOffset()*60*1000)/1000).toFixed(0);
-        setTimestampDatesValue([dateFromTimestamp, null])
+        setTimestampDatesValue([moment(newDatesValue[0]).format('X'), null]);
       } else if(newDatesValue[1]) {
-      const dateToTimestamp = ((newDatesValue[1].getTime() + newDatesValue[1].getTimezoneOffset()*60*1000)/1000).toFixed(0);
-      setTimestampDatesValue([null, dateToTimestamp]);
+      setTimestampDatesValue(null, [moment(newDatesValue[1]).format('X')]);
     }
-
   };
 
   return (

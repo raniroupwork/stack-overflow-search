@@ -16,17 +16,17 @@ const App = () => {
     const [isLogged, setValue] = useState(true);
 
     return (
-        <main className="App">
+        <div className="App">
             <Header></Header>
             {!isLogged ? (
                 <Login></Login>
             ):(
-                <div>
+                <main>
                     <SearchPanel></SearchPanel>
                     <QuestionsList></QuestionsList>
-                </div>
+                </main>
             )}
-        </main>
+        </div>
     );
 };
 

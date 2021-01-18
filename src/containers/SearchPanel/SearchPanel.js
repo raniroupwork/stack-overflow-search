@@ -12,6 +12,7 @@ import PageSize from '../../components/PageSize/PageSize.js'
 import SearchTags from '../../components/SearchTags/SearchTags.js'
 import SortBy from '../../components/SortBy/SortBy.js'
 import SearchPeriod from '../../components/SearchPeriod/SearchPeriod.js'
+import SaveButton from '../../components/SaveButton/SaveButton.js'
 
 const SearchPanel = () => {
 
@@ -26,6 +27,7 @@ const SearchPanel = () => {
                         <SearchPeriod xs={12} md={3} lg={3}></SearchPeriod>
                     </Grid>
                 </Paper>
+                <SaveButton></SaveButton>
         </section>
     );
 };

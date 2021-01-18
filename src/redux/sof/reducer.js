@@ -13,6 +13,7 @@ const INITIAL_STATE = {
         data: [],
         isLoading: false,
         error: '',
+        enableSearch: false,
     },
     PageSize: {
         data: 5,
@@ -121,26 +122,28 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
                     isLoading: true,
                 },
             };
-
-        case FETCH_SOF_SEARCH.SUCCESS:
-            return {
-                ...state,
-                SOFResult: {
-                    data: action.SOFSearchData,
-                    isLoading: false,
-                },
-            };
-
-        case FETCH_SOF_SEARCH.FAILURE:
-            return {
-                ...state,
-                SOFResult: {
-                    data: [],
-                    isLoading: false,
-                    error: action.SOFSearchError,
-                },
-            };
-
+            
+            case FETCH_SOF_SEARCH.SUCCESS:
+                return {
+                    ...state,
+                    SOFResult: {
+                        data: action.SOFSearchData,
+                        isLoading: false,
+                        enableSearch: true,
+                    },
+                };
+                
+                case FETCH_SOF_SEARCH.FAILURE:
+                    return {
+                        ...state,
+                        SOFResult: {
+                            data: [],
+                            isLoading: false,
+                            error: action.SOFSearchError,
+                            enableSearch: true,
+                        },
+                    };
+                    
         case FETCH_SOF_SEARCH.RESET:
             return {
                 ...state,

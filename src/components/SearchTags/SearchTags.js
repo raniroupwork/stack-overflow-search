@@ -14,9 +14,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TagInput from 'material-ui-chip-input'
 
 const SearchTags = (props) => {
-    const [searchTags, setSearchTags] = useState([]);
-    const [SearchTagsFull, setSearchTagsFull] = useState(false);
     const {
+        searchTagsValue,
         xs, md, lg,
         dispatch,
         SOFReducer: {
@@ -25,6 +24,8 @@ const SearchTags = (props) => {
             }
         }
     } = props;
+    const [searchTags, setSearchTags] = useState(searchTagsValue);
+    const [SearchTagsFull, setSearchTagsFull] = useState(false);
 
     useEffect(() => {
         dispatch({
@@ -70,6 +71,10 @@ const SearchTags = (props) => {
         </Grid>
     );
 };
+
+SearchTags.defaultProps = {
+    searchTagsValue: [],
+}
 
 const mapStateToProps = (state) => {
     return {

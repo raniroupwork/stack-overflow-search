@@ -48,4 +48,5 @@ export const SOFSaga = [
     takeEvery(SET_PERIOD_DATES.REQUEST, setPeriodDates),
     takeEvery(SET_SEARCH_TAGS.REQUEST, setSearchTags),
     takeEvery(SET_SEARCH_TEXT.REQUEST, setSearchText),
+    takeEvery(SET_SORT_BY.REQUEST, setSortType),
 ];

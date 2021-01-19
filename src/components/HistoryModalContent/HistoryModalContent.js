@@ -1,5 +1,6 @@
 // Modules
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 
 // Styles
 import "./HistoryModalContent.sass"
@@ -8,8 +9,16 @@ import "./HistoryModalContent.sass"
 import HistoryModalContentItem from "./HistoryModalContentItem/HistoryModalContentItem.js"
 import { Modal } from 'semantic-ui-react'
 
-const ModalContent = () => {
-    const [historyData, setHistoryData] = useState([])
+const ModalContent = (props) => {
+    const {
+        historyReducer: {
+            searchHistory
+        }
+    } = props;
+
+    useEffect(() => {
+        console.log(searchHistory);
+    }, [])
 
     return (
     <>
@@ -21,11 +30,19 @@ const ModalContent = () => {
                 </Modal.Description>
             )} */}
             <>
-                <HistoryModalContentItem></HistoryModalContentItem>
+                {searchHistory.data.map((data, index) => (
+                    <HistoryModalContentItem data={data} key={index}></HistoryModalContentItem>
+                ))}
             </>
         </Modal.Content>
     </>
     )
 }
 
-export default ModalContent
+const mapStateToProps = (state) => {
+    return {
+        historyReducer: state.historyReducer,
+    };
+}
+
+export default connect(mapStateToProps)(ModalContent)

@@ -22,7 +22,11 @@ import Grid from '@material-ui/core/Grid';
 
 
 
-const HistoryModalContentItem = () => {
+const HistoryModalContentItem = (props) => {
+    const {
+      data
+    } = props;
+
     const useStyles = makeStyles((theme) => ({
       button: {
         margin: theme.spacing(1),
@@ -34,6 +38,7 @@ const HistoryModalContentItem = () => {
     const [edit, setEditFilters] = useState([false]);
 
     useEffect(() => {
+      console.log(data);
       setEditFilters(false)
     }, [])
 
@@ -43,7 +48,7 @@ const HistoryModalContentItem = () => {
                 <div className="HistoryModalContentItem__header-text">
                     <HistoryIcon/>
                     <h4>Search for: </h4>
-                    <p>"Old search result text here..."</p>
+                    <p>"{data.searchText}"</p>
                 </div>
                 <div className="HistoryModalContentItem__header-options">
                     <Button
@@ -67,10 +72,10 @@ const HistoryModalContentItem = () => {
                 </div>
             </div>
             <Grid className={`HistoryModalContentItem__filters ${edit ? "" : "HistoryModalContentItem__filters--disable"}`} container spacing={3}>
-                <PageSize xs={6} md={1} lg={1}/>
-                <SortBy xs={6} md={3} lg={3}/>
-                <SearchTags xs={12} md={4} lg={4}/>
-                <SearchPeriod xs={12} md={4} lg={4}/>
+                <PageSize pageSizeValue={data.pageSize.data} xs={6} md={1} lg={1}/>
+                <SortBy sortByValue={data.sortBy} xs={6} md={3} lg={3}/>
+                <SearchTags searchTagsValue={data.searchTags} xs={12} md={4} lg={4}/>
+                <SearchPeriod searchPeriodValue={[new Date(data.fromDate), new Date(data.toDate)]} xs={12} md={4} lg={4}/>
             </Grid>
                 <div className="HistoryModalContentItem__edit" onClick={()=>(setEditFilters(!edit))}>
                     <EditIcon style={{ color: "#151515", fontSize: 18 }}/>

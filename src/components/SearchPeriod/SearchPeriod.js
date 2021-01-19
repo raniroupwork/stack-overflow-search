@@ -18,10 +18,8 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 
 const SearchPeriod = (props) => {
-  const [dates, setDatesValue] = useState([null, (new Date()).getTime()]);
-  const [datesTimestamp, setTimestampDatesValue] = useState([null, moment((new Date()).getTime()).format('X')]);
-
   const {
+      datesValue,
       xs, md, lg,
       dispatch,
       SOFReducer: {
@@ -30,6 +28,9 @@ const SearchPeriod = (props) => {
           }
       }
   } = props;
+  const [dates, setDatesValue] = useState([datesValue[0], datesValue[1]]);
+  const [datesTimestamp, setTimestampDatesValue] = useState([null, moment((new Date()).getTime()).format('X')]);
+
   useEffect(() => {
     dispatch({
       type: SET_PERIOD_DATES.REQUEST,
@@ -79,6 +80,10 @@ const mapStateToProps = (state) => {
   return {
       SOFReducer: state.SOFReducer,
   };
+}
+
+SearchPeriod.defaultProps = {
+  datesValue: [null, (new Date()).getTime()],
 }
 
 export default connect(mapStateToProps)(SearchPeriod)

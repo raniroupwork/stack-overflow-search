@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SaveButton = (props) => {
-    const classes = useStyles();
     const {
         dispatch,
         SOFReducer: {
@@ -29,15 +28,14 @@ const SaveButton = (props) => {
             SearchText,
             SortBy
         },
-        HistoryReducer,
+        historyReducer,
 
     } = props;
 
+    const classes = useStyles();
     const [enabled, setDisabled] = useState(false)
 
     const handleClick = () => {
-        // setDisabled(false);
-        console.log(props);
         dispatch({
             type: UPDATE_SEARCH_HISTORY.REQUEST,
             data: {
@@ -45,11 +43,12 @@ const SaveButton = (props) => {
                 fromDate: PeriodDates.data.fromDate,
                 toDate: PeriodDates.data.toDate,
                 searchTags: SearchTags.data,
-                pageSize: PageSize,
+                pageSize: PageSize.data,
                 sortBy: SortBy.data,
-                searchText: SearchText.data
+                searchText: SearchText.data,
             },
         });
+        setDisabled(false);
     }; 
 
     useEffect(() => {
@@ -66,10 +65,8 @@ const SaveButton = (props) => {
               variant="contained"
               color="primary"
               size="medium"
-            //   onClick={() => (setDisabled(false))}
               onClick={() => (handleClick())}
-            //   disabled={!enabled}
-              disabled={false}
+              disabled={!enabled}
               className={classes.button}
               startIcon={<SaveIcon />}>
                 Save
@@ -81,7 +78,7 @@ const SaveButton = (props) => {
 const mapStateToProps = (state) => {
     return {
         SOFReducer: state.SOFReducer,
-        HistoryReducer: state.HistoryReducer,
+        historyReducer: state.historyReducer,
     };
 }
 

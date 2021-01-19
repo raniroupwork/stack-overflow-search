@@ -15,18 +15,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 
 const SortBy = (props) => {
-    const pagination = ['Activity', 'Creation', 'Relevance', 'Votes'];
-    const [sortBy, setSortBy] = useState('Activity');
     const {
+        sortByValue,
         xs, md, lg,
         dispatch,
-        SOFReducer: {
-            SortBy: {
-                data,
-            },
-        }
+        SOFReducer,
     } = props;
+    const pagination = ['Activity', 'Creation', 'Relevance', 'Votes'];
+    const [sortBy, setSortBy] = useState(sortByValue);
 
+    const handleChange = (value) => {
+        setSortBy(value);
+        console.log('VALOR: ', value);
+        console.log('PROPS: ', props);
+    };
     useEffect(() => {
         dispatch({
             type: SET_SORT_BY.REQUEST,
@@ -46,14 +48,18 @@ const SortBy = (props) => {
                 variant="outlined"
                 displayEmpty={false}
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}>
+                onChange={(e) => handleChange(e.target.value)}>
                     {pagination.map((value, index) => (
-                    <MenuItem value={value} key={index}>{value}</MenuItem>
+                        <MenuItem value={value} key={index}>{value}</MenuItem>
                     ))}
             </Select>
         </Grid>
     );
 };
+
+SortBy.defaultProps = {
+    sortByValue: 'Activity',
+}
 
 const mapStateToProps = (state) => {
     return {

@@ -8,7 +8,7 @@ import { historySaga } from './history/saga.js';
 function* rootSagas() {
   yield all([
     ...SOFSaga,
-    ...historySaga
+    ...historySaga,
   ]);
 }
 

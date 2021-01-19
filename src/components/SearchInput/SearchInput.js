@@ -20,15 +20,16 @@ import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 
 const SearchInput = (props) => {
-    const [currentSearchText, setCurrentSearchText] = useState('');
-    const [searchText, setSearchText] = useState('');
-    const [searchCount, setSearchCount] = useState(0);
-    const [inputError, setInputError] = useState(false);
     const {
+        searchTextValue,
         xs, md, lg,
         dispatch,
         SOFReducer
     } = props
+    const [currentSearchText, setCurrentSearchText] = useState('');
+    const [searchText, setSearchText] = useState(searchTextValue);
+    const [searchCount, setSearchCount] = useState(0);
+    const [inputError, setInputError] = useState(false);
 
     const submitSearch = () => {
         if(currentSearchText.length){
@@ -92,6 +93,10 @@ const SearchInput = (props) => {
         </Grid>
     );
 };
+
+SearchInput.defaultProps = {
+    searchTextValue: '',
+}
 
 const mapStateToProps = (state) => {
     return {

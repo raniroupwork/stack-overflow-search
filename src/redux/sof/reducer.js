@@ -22,7 +22,7 @@ const INITIAL_STATE = {
         data: [],
     },
     SortBy: {
-        data: 'activity',
+        data: 'Activity',
     },
     SearchTags: {
         data: [],
@@ -78,7 +78,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 SortBy: {
-                    data:action.SortBy,
+                    data: action.SortBy,
                 },
         };
      
@@ -94,7 +94,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 PageSize: {
-                    data:action.PageSize,
+                    data: action.PageSize,
                 },
         };
      
@@ -110,7 +110,7 @@ const SOFReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 PeriodDates: {
-                    data:action.PeriodDates,
+                    data: action.PeriodDates,
                 },
         };
 

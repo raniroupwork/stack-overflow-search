@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     },
 };
 
-const HistoryReducer = (state = INITIAL_STATE, action) => {
+const historyReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case UPDATE_SEARCH_HISTORY.REQUEST:
@@ -28,7 +28,7 @@ const HistoryReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 searchHistory: {
-                    ...state.searchHistory,
+                    ...state,
                     data: state.searchHistory.data.concat(action.HistorySearchData),
                     isLoading: false,
                 },
@@ -77,4 +77,4 @@ const HistoryReducer = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default HistoryReducer;
+export default historyReducer;

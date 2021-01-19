@@ -15,17 +15,13 @@ import Grid from '@material-ui/core/Grid';
 import { SET_PAGE_SIZE } from '../../redux/sof/types.js';
 
 const PageSize = (props) => {
-    const pagination = [5, 10, 15, 20, 25];
-    const [pageSize, setPageSize] = useState(5);
     const {
+        pageSizeValue,
         xs, md, lg,
         dispatch,
-        SOFReducer: {
-            PageSize: {
-                data
-            }
-        }
     } = props;
+    const pagination = [5, 10, 15, 20, 25];
+    const [pageSize, setPageSize] = useState(pageSizeValue);
 
     useEffect(() => {
         dispatch({
@@ -54,6 +50,10 @@ const PageSize = (props) => {
         </Grid>
     );
 };
+
+PageSize.defaultProps = {
+    pageSizeValue: 5,
+}
 
 const mapStateToProps = (state) => {
     return {

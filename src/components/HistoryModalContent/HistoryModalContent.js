@@ -24,14 +24,14 @@ const ModalContent = (props) => {
     <>
         <Modal.Header>Search History</Modal.Header>
         <Modal.Content scrolling>
-            {/* {!historyData.length &&(
+            {!searchHistory.data.length &&(
                 <Modal.Description>
-                <h5>Your history is empty</h5>
+                    <h5>Your search history is empty</h5>
                 </Modal.Description>
-            )} */}
+            )}
             <>
                 {searchHistory.data.map((data, index) => (
-                    <HistoryModalContentItem data={data} key={index}></HistoryModalContentItem>
+                    <HistoryModalContentItem data={data} index={index} key={index}></HistoryModalContentItem>
                 ))}
             </>
         </Modal.Content>

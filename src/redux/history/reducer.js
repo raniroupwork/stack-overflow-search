@@ -28,7 +28,7 @@ const historyReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 searchHistory: {
-                    ...state,
+                    ...state.searchHistory,
                     data: state.searchHistory.data.concat(action.HistorySearchData),
                     isLoading: false,
                 },

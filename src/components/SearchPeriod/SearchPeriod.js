@@ -19,16 +19,12 @@ import Grid from '@material-ui/core/Grid';
 
 const SearchPeriod = (props) => {
   const {
-      datesValue,
+      searchFromDatedValue,
+      searchToDatedValue,
       xs, md, lg,
-      dispatch,
-      SOFReducer: {
-          PeriodDates: {
-            data
-          }
-      }
+      dispatch
   } = props;
-  const [dates, setDatesValue] = useState([datesValue[0], datesValue[1]]);
+  const [dates, setDatesValue] = useState([searchFromDatedValue, searchToDatedValue]);
   const [datesTimestamp, setTimestampDatesValue] = useState([null, moment((new Date()).getTime()).format('X')]);
 
   useEffect(() => {
@@ -44,6 +40,7 @@ const SearchPeriod = (props) => {
   /* Convert Dates to  unix epoch time */
   const handleDatesValue = (newDatesValue) => {
     setDatesValue([newDatesValue[0], newDatesValue[1]]);
+    console.log(newDatesValue[0]);
     if(newDatesValue[0] && newDatesValue[1]) {
       setTimestampDatesValue([moment(newDatesValue[0]).format('X'), moment(newDatesValue[1]).format('X')]);
     } else if(newDatesValue[0]) {
@@ -83,7 +80,8 @@ const mapStateToProps = (state) => {
 }
 
 SearchPeriod.defaultProps = {
-  datesValue: [null, (new Date()).getTime()],
+  searchFromDatedValue: null,
+  searchToDatedValue: (new Date()).getTime(),
 }
 
 export default connect(mapStateToProps)(SearchPeriod)

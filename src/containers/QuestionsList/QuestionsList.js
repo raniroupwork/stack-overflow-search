@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import './QuestionsList.sass';
 
 // Components
+import { Alert, AlertTitle } from '@material-ui/lab';
 import QuestionItem from '../../components/QuestionItem/QuestionItem.js'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -30,8 +31,13 @@ const QuestionsList = (props) => {
             ) : (
                 data.items && data.items.length ? data.items.map((item) => (
                     <QuestionItem key={item.question_id} data={item}></QuestionItem>
-                )) : data.items && (<p>No results</p>)
-            ))}
+                )) : data.items && (<div className="QuestionsList__empty"><p>No results</p></div>)
+            ))};
+            {error ? (
+                <Alert severity="error">
+                <AlertTitle>Error</AlertTitle>
+                    This is an error alert — <strong>{error}</strong>
+                </Alert>) : <></>}
         </section>
     );
 };

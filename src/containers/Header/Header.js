@@ -58,7 +58,8 @@ const Header = () => {
                                     text={'Logout'}
                                     value={'Logout'}
                                     key={'Logout'}
-                                    onClick={() => setAuth(false)}/>
+                                    // onClick={() => setAuth(false)}/>
+                                    onClick={() => {alert('Logout...')}}/>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>

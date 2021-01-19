@@ -1,5 +1,6 @@
 // Modules
 import React, {useState, useEffect} from 'react';
+import moment from 'moment';
 
 // Styles
 import "./HistoryModalContentItem.sass"
@@ -24,7 +25,8 @@ import Grid from '@material-ui/core/Grid';
 
 const HistoryModalContentItem = (props) => {
     const {
-      data
+      data,
+      index
     } = props;
 
     const useStyles = makeStyles((theme) => ({
@@ -38,7 +40,7 @@ const HistoryModalContentItem = (props) => {
     const [edit, setEditFilters] = useState([false]);
 
     useEffect(() => {
-      console.log(data);
+      console.log('DATE:  ', new Date(data.fromDate * 1000));
       setEditFilters(false)
     }, [])
 
@@ -48,7 +50,7 @@ const HistoryModalContentItem = (props) => {
                 <div className="HistoryModalContentItem__header-text">
                     <HistoryIcon/>
                     <h4>Search for: </h4>
-                    <p>"{data.searchText}"</p>
+                    <p>"{data.searchText}" - at {moment(new Date()).format('MMMM DD, YYYY - HH:mm')}</p>
                 </div>
                 <div className="HistoryModalContentItem__header-options">
                     <Button
@@ -72,10 +74,10 @@ const HistoryModalContentItem = (props) => {
                 </div>
             </div>
             <Grid className={`HistoryModalContentItem__filters ${edit ? "" : "HistoryModalContentItem__filters--disable"}`} container spacing={3}>
-                <PageSize pageSizeValue={data.pageSize.data} xs={6} md={1} lg={1}/>
+                <PageSize pageSizeValue={data.pageSize} xs={6} md={1} lg={1}/>
                 <SortBy sortByValue={data.sortBy} xs={6} md={3} lg={3}/>
                 <SearchTags searchTagsValue={data.searchTags} xs={12} md={4} lg={4}/>
-                <SearchPeriod searchPeriodValue={[new Date(data.fromDate), new Date(data.toDate)]} xs={12} md={4} lg={4}/>
+                <SearchPeriod searchFromDatedValue={new Date(data.fromDate * 1000)} searchToDatedValue={new Date(data.toDate * 1000)} xs={12} md={4} lg={4}/>
             </Grid>
                 <div className="HistoryModalContentItem__edit" onClick={()=>(setEditFilters(!edit))}>
                     <EditIcon style={{ color: "#151515", fontSize: 18 }}/>

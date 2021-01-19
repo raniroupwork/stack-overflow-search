@@ -54,6 +54,12 @@ const SearchInput = (props) => {
         }
     };
 
+    const handleKeydown = (e) => {
+        if (currentSearchText.length && e.key === 'Enter') {
+            submitSearch();
+        }
+    }
+
     useEffect(() => {
         dispatch({
             type: SET_SEARCH_TEXT.REQUEST,
@@ -75,6 +81,7 @@ const SearchInput = (props) => {
                         disabled={SOFReducer.SOFResult.isLoading}
                         error={inputError}
                         placeholder="Search Stack Overflow"
+                        onKeyDown={(e) => {handleKeydown(e)}}
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton

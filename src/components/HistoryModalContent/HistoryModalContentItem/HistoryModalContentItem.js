@@ -1,10 +1,14 @@
 // Modules
 import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
 // Styles
 import "./HistoryModalContentItem.sass"
 import { makeStyles } from '@material-ui/core/styles';
+
+// Types
+import { DELETE_SEARCH_HISTORY } from '../../../redux/history/types.js';
 
 // Icons
 import SearchIcon from '@material-ui/icons/Search';
@@ -25,9 +29,13 @@ import Grid from '@material-ui/core/Grid';
 
 const HistoryModalContentItem = (props) => {
     const {
+      dispatch,
       data,
-      index
+      index,
     } = props;
+
+    const [historyData, setHistoryData] = useState([]);
+    const [edit, setEditFilters] = useState([false]);
 
     const useStyles = makeStyles((theme) => ({
       button: {
@@ -36,8 +44,19 @@ const HistoryModalContentItem = (props) => {
     }));
     const classes = useStyles();
 
-    const [historyData, setHistoryData] = useState([]);
-    const [edit, setEditFilters] = useState([false]);
+    const deleteItem = (index) => {
+      dispatch({
+          type: DELETE_SEARCH_HISTORY.REQUEST,
+          data: {
+              itemIndex: index,
+          },
+      });
+      alert('Remove item ' + index + ' from DB...');
+    };
+    
+    const searchAgain = () => {
+      alert('Search again...');
+    }
 
     useEffect(() => {
       setEditFilters(false);
@@ -57,6 +76,7 @@ const HistoryModalContentItem = (props) => {
                       color="secondary"
                       className={classes.button, "HistoryModalContentItem__delete"}
                       size="small"
+                      onClick={() => deleteItem(index)}
                       startIcon={<DeleteIcon />}
                     >
                       Delete
@@ -66,6 +86,7 @@ const HistoryModalContentItem = (props) => {
                       color="primary"
                       className={classes.button, "HistoryModalContentItem__search"}
                       size="small"
+                      onClick={() => searchAgain()}
                       endIcon={<SearchIcon />}
                     >
                       Search
@@ -85,4 +106,10 @@ const HistoryModalContentItem = (props) => {
     )
 }
 
-export default HistoryModalContentItem
+const mapStateToProps = (state) => {
+  return {
+      historyReducer: state.historyReducer,
+  };
+}
+
+export default connect(mapStateToProps)(HistoryModalContentItem)

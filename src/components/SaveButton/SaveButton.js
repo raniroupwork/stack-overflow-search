@@ -48,6 +48,7 @@ const SaveButton = (props) => {
                 searchText: SearchText.data,
             },
         });
+        console.log(props);
         setDisabled(false);
     }; 
 

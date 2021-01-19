@@ -88,8 +88,7 @@ const SearchInput = (props) => {
                                 aria-label="Search submit"
                                 color="primary"
                                 onClick={submitSearch}
-                                edge="end"
-                                >
+                                edge="end">
                                     <SearchIcon/>
                                 </IconButton>
                             </InputAdornment>

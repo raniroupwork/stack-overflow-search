@@ -31,8 +31,8 @@ const SearchPeriod = (props) => {
     dispatch({
       type: SET_PERIOD_DATES.REQUEST,
       data: {
-        fromDate: datesTimestamp[0],
-        toDate: datesTimestamp[1],
+        fromDate: datesTimestamp === null ? null : datesTimestamp[0],
+        toDate: datesTimestamp === null ? null : datesTimestamp[1],
       },
     });
   }, [dates, datesTimestamp])

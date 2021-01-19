@@ -15,11 +15,7 @@ const ModalContent = (props) => {
             searchHistory
         }
     } = props;
-
-    useEffect(() => {
-        console.log(searchHistory);
-    }, [])
-
+    
     return (
     <>
         <Modal.Header>Search History</Modal.Header>

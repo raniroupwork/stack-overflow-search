@@ -40,8 +40,7 @@ const HistoryModalContentItem = (props) => {
     const [edit, setEditFilters] = useState([false]);
 
     useEffect(() => {
-      console.log('DATE:  ', new Date(data.fromDate * 1000));
-      setEditFilters(false)
+      setEditFilters(false);
     }, [])
 
     return (

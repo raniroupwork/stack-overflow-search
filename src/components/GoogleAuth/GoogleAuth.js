@@ -8,17 +8,16 @@ import { SIGN_IN, SIGN_OUT } from '../../redux/auth/types.js';
 const GoogleAuth = ( props ) => {
 	const {
 		dispatch,
-		isSignedIn,
-		userId,
-		authReducer
+		authReducer: {
+			isSignedIn
+		}
 	} = props;
 
   const [auth, setAuth] = useState(null);
 
 	useEffect(() => {
 		const params = {
-			clientId:
-			"77222610368-vquuqu2p28r0m07o94ie84cqk42etpbj.apps.googleusercontent.com",
+			clientId: "77222610368-vquuqu2p28r0m07o94ie84cqk42etpbj.apps.googleusercontent.com",
 			scope: "email",
 		};
 
@@ -52,30 +51,25 @@ const GoogleAuth = ( props ) => {
 		auth.signOut();
 	};
 
-	const renderAuthButton = () => {
-		if (isSignedIn === null) {
-			return null;
-		} else if (isSignedIn) {
-			return (
-			<div>
-				<span>{userId}</span>
-				<button onClick={onSignOutClick}>Signout</button>
-			</div>
-			);
-		} else {
-			return <button onClick={onSignInClick}>Sign In with Google</button>;
-		}
-	};
+	return (
+	<div>
+		{isSignedIn ? (
+			<button onClick={onSignOutClick}>Signout</button>
+		):(
+			<button onClick={onSignInClick}>Sign In with Google</button>
+		)}
+	</div>
+	);
 
-	return <div>{renderAuthButton()}</div>;
+
 };
 
 const mapStateToProps = (state) => {
 	return {
-		isSignedIn: state.auth.isSignedIn,
-		userId: state.auth.userId
+		authReducer: state.authReducer,
 	};
 };
 
 
 export default connect(mapStateToProps)(GoogleAuth);
+

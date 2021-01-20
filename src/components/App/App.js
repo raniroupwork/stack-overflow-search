@@ -18,7 +18,7 @@ const App = () => {
     return (
         <div className="App">
             <Header></Header>
-            {!isLogged ? (
+            {isLogged ? (
                 <Login></Login>
             ):(
                 <main>
